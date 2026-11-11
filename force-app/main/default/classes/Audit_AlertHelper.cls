@@ -15,10 +15,10 @@
  */
 
 public class Audit_AlertHelper {
-
+// testing update in the editor
 	@AuraEnabled(cacheable=true)
 	public static void doSomething() {
 		// Your logic here
-	}
+	}  
 
 }
