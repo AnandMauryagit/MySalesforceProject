@@ -1,0 +1,125 @@
+<template>
+
+    <!-- Button -->
+    <div class="slds-p-around_medium slds-align_absolute-center">
+        <lightning-button
+            variant="brand"
+            label="Create Document"
+            icon-name="utility:add"
+            onclick={openModal}>
+        </lightning-button>
+    </div>
+
+    <!-- Modal -->
+    <template if:true={showModal}>
+
+        <section
+            role="dialog"
+            tabindex="-1"
+            aria-modal="true"
+            class="slds-modal slds-fade-in-open">
+
+            <div class="slds-modal__container modalContainer">
+
+                <!-- Header -->
+                <header class="slds-modal__header">
+
+                    <lightning-button-icon
+                        icon-name="utility:close"
+                        alternative-text="Close"
+                        class="slds-modal__close"
+                        onclick={closeModal}>
+                    </lightning-button-icon>
+
+                    <h2 class="slds-text-heading_medium">
+                        📄 Create New Document
+                    </h2>
+
+                </header>
+
+                <!-- Body -->
+                <div class="slds-modal__content">
+
+                    <lightning-card class="mainCard">
+
+                        <div class="header">
+                            <lightning-icon
+                                icon-name="doctype:attachment"
+                                size="medium">
+                            </lightning-icon>
+
+                            <div class="titleSection">
+                                <h1>New Document</h1>
+                                <p>Create and manage your document.</p>
+                            </div>
+                        </div>
+
+                        <div class="form">
+
+                            <lightning-input
+                                label="Document Name"
+                                value={documentName}
+                                onchange={handleName}>
+                            </lightning-input>
+
+                            <lightning-combobox
+                                label="Category"
+                                value={category}
+                                options={categoryOptions}
+                                onchange={handleCategory}>
+                            </lightning-combobox>
+
+                            <div class="dateGrid">
+
+                                <lightning-input
+                                    type="date"
+                                    label="Start Date"
+                                    value={startDate}
+                                    onchange={handleStartDate}>
+                                </lightning-input>
+
+                                <lightning-input
+                                    type="date"
+                                    label="Expiry Date"
+                                    value={expiryDate}
+                                    onchange={handleExpiryDate}>
+                                </lightning-input>
+
+                            </div>
+
+                            <lightning-textarea
+                                label="Description"
+                                value={description}
+                                onchange={handleDescription}>
+                            </lightning-textarea>
+
+                            <div class="buttons">
+
+                                <lightning-button
+                                    label="Clear"
+                                    onclick={clearForm}>
+                                </lightning-button>
+
+                                <lightning-button
+                                    variant="brand"
+                                    label="Save Document"
+                                    onclick={saveDocument}>
+                                </lightning-button>
+
+                            </div>
+
+                        </div>
+
+                    </lightning-card>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="slds-backdrop slds-backdrop_open"></div>
+
+    </template>
+
+</template>

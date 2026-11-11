@@ -1,0 +1,220 @@
+<template>
+
+    <lightning-card
+        title="Partial Success Demo"
+        icon-name="utility:database">
+
+        <div class="container">
+
+            <!-- Description -->
+            <div class="description">
+                <p>
+                    This demo inserts 10 records using
+                    <strong>Database.insert(records, false)</strong>.
+                </p>
+
+                <p>
+                    Successful records are saved while failed records
+                    are returned with their error messages.
+                </p>
+            </div>
+
+
+            <!-- Execute Button -->
+
+            <div class="button-container">
+
+                <lightning-button
+                    variant="brand"
+                    label="Insert 10 Records"
+                    icon-name="utility:add"
+                    onclick={handleInsert}
+                    disabled={isLoading}>
+                </lightning-button>
+
+            </div>
+
+
+            <!-- Spinner -->
+
+            <template if:true={isLoading}>
+
+                <div class="spinner-container">
+
+                    <lightning-spinner
+                        alternative-text="Processing">
+                    </lightning-spinner>
+
+                </div>
+
+            </template>
+
+
+            <!-- Summary -->
+
+            <template if:true={showResults}>
+
+                <div class="summary">
+
+                    <!-- Total -->
+
+                    <div class="summary-card total">
+
+                        <div class="summary-icon">
+                            <lightning-icon
+                                icon-name="utility:database"
+                                size="small">
+                            </lightning-icon>
+                        </div>
+
+                        <div>
+                            <div class="summary-title">
+                                Total Records
+                            </div>
+
+                            <div class="summary-number">
+                                {totalRecords}
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Success -->
+
+                    <div class="summary-card success">
+
+                        <div class="summary-icon">
+                            <lightning-icon
+                                icon-name="utility:success"
+                                size="small">
+                            </lightning-icon>
+                        </div>
+
+                        <div>
+                            <div class="summary-title">
+                                Successful
+                            </div>
+
+                            <div class="summary-number">
+                                {successCount}
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Failed -->
+
+                    <div class="summary-card failed">
+
+                        <div class="summary-icon">
+                            <lightning-icon
+                                icon-name="utility:error"
+                                size="small">
+                            </lightning-icon>
+                        </div>
+
+                        <div>
+                            <div class="summary-title">
+                                Failed
+                            </div>
+
+                            <div class="summary-number">
+                                {failedCount}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUCCESS RECORDS -->
+
+                <div class="section">
+
+                    <div class="section-header success-header">
+
+                        <lightning-icon
+                            icon-name="utility:success"
+                            size="small">
+                        </lightning-icon>
+
+                        <span>
+                            Successfully Saved Records
+                        </span>
+
+                    </div>
+
+
+                    <template if:true={hasSuccessRecords}>
+
+                        <lightning-datatable
+                            key-field="recordId"
+                            data={successRecords}
+                            columns={successColumns}
+                            hide-checkbox-column>
+                        </lightning-datatable>
+
+                    </template>
+
+
+                    <template if:false={hasSuccessRecords}>
+
+                        <div class="empty-message">
+                            No records were saved.
+                        </div>
+
+                    </template>
+
+                </div>
+
+
+                <!-- FAILED RECORDS -->
+
+                <div class="section">
+
+                    <div class="section-header failed-header">
+
+                        <lightning-icon
+                            icon-name="utility:error"
+                            size="small">
+                        </lightning-icon>
+
+                        <span>
+                            Failed Records
+                        </span>
+
+                    </div>
+
+
+                    <template if:true={hasFailedRecords}>
+
+                        <lightning-datatable
+                            key-field="recordName"
+                            data={failedRecords}
+                            columns={failedColumns}
+                            hide-checkbox-column>
+                        </lightning-datatable>
+
+                    </template>
+
+
+                    <template if:false={hasFailedRecords}>
+
+                        <div class="empty-message">
+                            No records failed.
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </template>
+
+        </div>
+
+    </lightning-card>
+
+</template>

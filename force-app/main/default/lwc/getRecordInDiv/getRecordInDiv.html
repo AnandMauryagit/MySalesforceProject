@@ -1,0 +1,16 @@
+<template>
+<lightning-card title= "Data of Account">
+    <div class="slds-p-around_medium">
+   <template if:true={accountsData.data}>
+   <template for:each={accountsData.data} for:item="account">
+<div class="slds-box slds-box_xx-small" key={accountsData.Id}>
+    <p><strong> Name : </strong> {account.Name}   </p>
+        <p><strong> Name : </strong> {account.Id}   </p>
+
+</div>
+
+    </template>
+   </template>
+    </div>
+     </lightning-card>
+</template>

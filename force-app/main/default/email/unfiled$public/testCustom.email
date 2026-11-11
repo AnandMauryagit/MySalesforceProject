@@ -1,0 +1,25 @@
+<html>
+<body style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+    <p>Hi {!Contact.FirstName},</p>
+
+    <p>Thank you for setting up your Pro 2.0 login! Now that you have access to our new and improved system, you can explore our updated features. I’ve attached a few resources below that should help with getting you started:</p>
+
+    <h3>Resources:</h3>
+    <ul>
+        <li>Video Tutorials</li>
+        <li>Dashboard and Campaign Overview</li>
+        <li>Leads Page and Leads Details</li>
+        <li>Billing Page Overview</li>
+        <li>Check your Accounts Credit History</li>
+        <li>Updating and Managing Credit Cards</li>
+        <li>Account Balance and Top-ups</li>
+        <li>Pro 2.0 FAQ for Agents</li>
+    </ul>
+
+    <p>If you have any additional questions, our support team can assist you at <strong>(844) 707-8800 Opt. 1</strong>.</p>
+
+    <p>Thank you!</p>
+
+    <p>Best Regards,<br />Your Company Name</p>
+</body>
+</html>

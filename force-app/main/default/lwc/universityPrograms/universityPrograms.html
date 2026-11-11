@@ -1,0 +1,631 @@
+<template>
+
+    <!-- =====================================================
+         PROGRAM HERO
+    ===================================================== -->
+
+    <section class="program-hero">
+
+        <div class="hero-content">
+
+            <div class="breadcrumb">
+
+                Home
+                <span>›</span>
+                Academic Programs
+
+            </div>
+
+
+            <span class="hero-label">
+                ACADEMIC PROGRAMS
+            </span>
+
+
+            <h2>
+                Discover Your Path to Success
+            </h2>
+
+
+            <p>
+                Explore flexible undergraduate, postgraduate,
+                diploma and certificate programs designed to
+                help you achieve your academic and career goals.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SEARCH & FILTER
+    ===================================================== -->
+
+    <section class="program-search-section">
+
+        <div class="search-wrapper">
+
+
+            <div class="search-box">
+
+                <span>
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    placeholder="Search programs..."
+                    value={searchTerm}
+                    oninput={handleSearchInput}
+                />
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <button
+                    class={allFilterClass}
+                    data-level="All"
+                    onclick={handleFilter}>
+
+                    All Programs
+
+                </button>
+
+
+                <button
+                    class={ugFilterClass}
+                    data-level="Undergraduate"
+                    onclick={handleFilter}>
+
+                    Undergraduate
+
+                </button>
+
+
+                <button
+                    class={pgFilterClass}
+                    data-level="Postgraduate"
+                    onclick={handleFilter}>
+
+                    Postgraduate
+
+                </button>
+
+
+                <button
+                    class={diplomaFilterClass}
+                    data-level="Diploma"
+                    onclick={handleFilter}>
+
+                    Diploma
+
+                </button>
+
+
+                <button
+                    class={certificateFilterClass}
+                    data-level="Certificate"
+                    onclick={handleFilter}>
+
+                    Certificate
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROGRAM COUNT
+    ===================================================== -->
+
+    <section class="results-header">
+
+        <div>
+
+            <span class="result-label">
+                ACADEMIC CATALOG
+            </span>
+
+            <h2>
+                Explore Our Programs
+            </h2>
+
+        </div>
+
+
+        <div class="program-count">
+
+            {filteredPrograms.length}
+            Programs Available
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROGRAM CARDS
+    ===================================================== -->
+
+    <!-- <section class="programs-section">
+
+
+        <template if:true={hasPrograms}>
+
+            <div class="program-grid">
+
+
+                <template
+                    for:each={filteredPrograms}
+                    for:item="program">
+
+
+                    <article
+                        class="program-card"
+                        key={program.id}>
+
+
+                      // PROGRAM HEADER 
+
+                        <div
+                            class="program-banner"
+                            data-category={program.category}>
+
+                            <span class="program-icon">
+                                {program.icon}
+                            </span>
+
+                            <span class="level-badge">
+                                {program.level}
+                            </span>
+
+                        </div>
+
+
+                        // PROGRAM BODY 
+
+                        <div class="program-body">
+
+                            <span class="category">
+                                {program.category}
+                            </span>
+
+
+                            <h3>
+                                {program.name}
+                            </h3>
+
+
+                            <p class="description">
+                                {program.description}
+                            </p>
+
+
+                          //   PROGRAM INFORMATION 
+
+                            <div class="program-info">
+
+
+                                <div>
+
+                                    <span>
+                                        ⏱
+                                    </span>
+
+                                    <strong>
+                                        Duration
+                                    </strong>
+
+                                    <p>
+                                        {program.duration}
+                                    </p>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        🎓
+                                    </span>
+
+                                    <strong>
+                                        Eligibility
+                                    </strong>
+
+                                    <p>
+                                        {program.eligibility}
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+
+
+                          //   FEE 
+
+                            <div class="fee-row">
+
+                                <div>
+
+                                    <small>
+                                        Estimated Annual Fee
+                                    </small>
+
+                                    <strong>
+                                        ₹{program.fee}
+                                    </strong>
+
+                                </div>
+
+
+                                <span class="mode">
+
+                                    🌐 {program.mode}
+
+                                </span>
+
+                            </div>
+
+
+                         //    BUTTONS 
+
+                            <div class="card-actions">
+
+
+                                <button
+                                    class="details-btn"
+                                    data-id={program.id}
+                                    onclick={handleDetails}>
+
+                                    View Details
+
+                                </button>
+
+
+                                <button
+                                    class="apply-btn"
+                                    data-id={program.id}
+                                    onclick={handleApply}>
+
+                                    Apply Now
+
+                                </button>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </article>
+
+
+                </template>
+
+            </div>
+
+        </template>
+-------------------------------------------
+-------------------------------------
+ -->
+<template for:each={filteredPrograms} for:item="program">
+
+    <article
+        class="program-card"
+        key={program.Id}>
+
+        <!-- PROGRAM HEADER -->
+
+        <div
+            class="program-banner"
+            data-category={program.Category__c}>
+
+            <span class="program-icon">
+                🎓
+            </span>
+
+            <span class="level-badge">
+                {program.Level__c}
+            </span>
+
+        </div>
+
+
+        <!-- PROGRAM BODY -->
+
+        <div class="program-body">
+
+            <span class="category">
+                {program.Category__c}
+            </span>
+
+
+            <h3>
+                {program.Name}
+            </h3>
+
+
+            <p class="description">
+                {program.Description__c}
+            </p>
+
+
+            <!-- PROGRAM INFORMATION -->
+
+            <div class="program-info">
+
+                <div>
+
+                    <span>⏱</span>
+
+                    <strong>
+                        Duration
+                    </strong>
+
+                    <p>
+                        {program.Duration__c}
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span>🎓</span>
+
+                    <strong>
+                        Eligibility
+                    </strong>
+
+                    <p>
+                        {program.Eligibility__c}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FEE -->
+
+            <div class="fee-row">
+
+                <div>
+
+                    <small>
+                        Estimated Annual Fee
+                    </small>
+
+                    <strong>
+                        ₹{program.Annual_Fee__c}
+                    </strong>
+
+                </div>
+
+
+                <span class="mode">
+
+                    🌐 {program.Mode__c}
+
+                </span>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="card-actions">
+
+                <button
+                    class="details-btn"
+                    data-id={program.Id}
+                    onclick={handleDetails}>
+
+                    View Details
+
+                </button>
+
+
+                <button
+                    class="apply-btn"
+                    data-id={program.Id}
+                    onclick={handleApply}>
+
+                    Apply Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</template>
+
+
+
+
+        <!-- =================================================
+             NO RESULTS
+        ================================================== -->
+
+        <template if:false={hasPrograms}>
+
+            <div class="no-results">
+
+                <div>
+                    🔎
+                </div>
+
+                <h3>
+                    No Programs Found
+                </h3>
+
+                <p>
+                    Try changing your search or selecting another category.
+                </p>
+
+                <button
+                    onclick={clearFilters}>
+
+                    View All Programs
+
+                </button>
+
+            </div>
+
+        </template>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         WHY CHOOSE US
+    ===================================================== -->
+
+    <section class="why-section">
+
+        <div class="section-heading">
+
+            <span>
+                WHY CHOOSE US
+            </span>
+
+            <h2>
+                Education Designed Around You
+            </h2>
+
+            <p>
+                Our programs are designed to provide flexibility,
+                accessibility and quality education for learners
+                at every stage.
+            </p>
+
+        </div>
+
+
+        <div class="benefits-grid">
+
+
+            <div class="benefit-card">
+
+                <div class="benefit-icon">
+                    🌐
+                </div>
+
+                <h3>
+                    Flexible Learning
+                </h3>
+
+                <p>
+                    Learn from anywhere with flexible online
+                    and distance learning options.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <div class="benefit-icon">
+                    👨‍🏫
+                </div>
+
+                <h3>
+                    Expert Faculty
+                </h3>
+
+                <p>
+                    Learn from experienced faculty and
+                    academic professionals.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <div class="benefit-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Affordable Education
+                </h3>
+
+                <p>
+                    Quality education at an affordable cost
+                    for students across the country.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <div class="benefit-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Digital Student Services
+                </h3>
+
+                <p>
+                    Access courses, results, fees and
+                    academic services from one portal.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         APPLICATION CTA
+    ===================================================== -->
+
+    <section class="application-cta">
+
+        <div>
+
+            <span>
+                READY TO START?
+            </span>
+
+            <h2>
+                Begin Your Academic Journey Today
+            </h2>
+
+            <p>
+                Find the right program and take the first
+                step towards your future.
+            </p>
+
+        </div>
+
+
+        <button
+            onclick={handleApplyGeneral}>
+
+            Start Application →
+
+        </button>
+
+    </section>
+
+</template>

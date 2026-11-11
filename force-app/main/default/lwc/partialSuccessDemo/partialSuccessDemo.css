@@ -1,0 +1,141 @@
+.container {
+    padding: 1rem;
+}
+
+
+/* Description */
+
+.description {
+    background: #f3f6f9;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.description p {
+    margin: 0.25rem 0;
+}
+
+
+/* Button */
+
+.button-container {
+    margin-bottom: 1.5rem;
+}
+
+
+/* Summary */
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 1.2rem;
+
+    border-radius: 10px;
+
+    border: 1px solid #d8dde6;
+
+    background: white;
+}
+
+
+.summary-card.success {
+    border-left: 5px solid #2e844a;
+}
+
+
+.summary-card.failed {
+    border-left: 5px solid #ba0517;
+}
+
+
+.summary-card.total {
+    border-left: 5px solid #0176d3;
+}
+
+
+.summary-title {
+    font-size: 0.85rem;
+    color: #5c5c5c;
+}
+
+
+.summary-number {
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+
+/* Sections */
+
+.section {
+    margin-top: 1.5rem;
+
+    border: 1px solid #d8dde6;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+
+.section-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
+    padding: 0.9rem 1rem;
+
+    font-weight: 700;
+}
+
+
+.success-header {
+    background: #eafaf1;
+}
+
+
+.failed-header {
+    background: #fcebea;
+}
+
+
+.empty-message {
+    padding: 1.5rem;
+
+    text-align: center;
+
+    color: #706e6b;
+}
+
+
+/* Spinner */
+
+.spinner-container {
+    position: relative;
+
+    min-height: 80px;
+}
+
+
+/* Responsive */
+
+@media screen and (max-width: 768px) {
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+}

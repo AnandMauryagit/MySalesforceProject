@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Level --></label>
+    <name>Level__c</name>
+    <picklistValues>
+        <masterLabel>Certificate</masterLabel>
+        <translation><!-- Certificate --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Diploma</masterLabel>
+        <translation><!-- Diploma --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Postgraduate</masterLabel>
+        <translation><!-- Postgraduate --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Undergraduate</masterLabel>
+        <translation><!-- Undergraduate --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

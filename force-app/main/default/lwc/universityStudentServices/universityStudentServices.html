@@ -1,0 +1,814 @@
+<template>
+
+    <!-- =========================================================
+         LOADING
+         ========================================================= -->
+
+    <template if:true={isLoading}>
+        <div class="loading-container">
+
+            <lightning-spinner alternative-text="Loading student services" size="medium">
+            </lightning-spinner>
+
+            <p>
+                Loading your student dashboard...
+            </p>
+
+        </div>
+    </template>
+
+
+    <!-- =========================================================
+         ERROR
+         ========================================================= -->
+
+    <template if:true={errorMessage}>
+
+        <div class="error-container">
+
+            <div class="error-icon">
+                !
+            </div>
+
+            <div>
+                <strong>
+                    Unable to load Student Services
+                </strong>
+
+                <p>
+                    {errorMessage}
+                </p>
+            </div>
+
+        </div>
+
+    </template>
+
+
+    <template if:true={showDashboard}>
+
+        <div class="student-services-page">
+
+
+            <!-- =================================================
+                 HERO
+                 ================================================= -->
+
+            <section class="student-hero">
+
+                <div class="hero-content">
+
+                    <div class="welcome-label">
+                        STUDENT SERVICES
+                    </div>
+
+                    <h1>
+                        Welcome back, {studentName}
+                    </h1>
+
+                    <p>
+                        Manage your applications, academic
+                        information, documents and support
+                        requests from one place.
+                    </p>
+
+                    <div class="student-email">
+                        {studentEmail}
+                    </div>
+
+                </div>
+
+                <div class="hero-decoration">
+                    🎓
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 QUICK STATS
+                 ================================================= -->
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        🎓
+                    </div>
+
+                    <div>
+                        <span>
+                            Applications
+                        </span>
+
+                        <strong>
+                            {applicationCount}
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>
+                            Active Application
+                        </span>
+
+                        <strong>
+                            {latestApplicationStatus}
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        📄
+                    </div>
+
+                    <div>
+                        <span>
+                            Documents
+                        </span>
+
+                        <strong>
+                            Available
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        📨
+                    </div>
+
+                    <div>
+                        <span>
+                            Service Requests
+                        </span>
+
+                        <strong>
+                            {requestCount}
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 QUICK ACTIONS
+                 ================================================= -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">
+                            QUICK ACCESS
+                        </span>
+
+                        <h2>
+                            What would you like to do?
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+                    <button
+                        class="quick-card"
+                        data-action="profile"
+                        onclick={handleQuickAction}>
+
+                        <span class="quick-icon blue">
+                            👤
+                        </span>
+
+                        <span class="quick-title">
+                            My Profile
+                        </span>
+
+                        <span class="quick-description">
+                            View your personal and contact
+                            information.
+                        </span>
+
+                        <span class="quick-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="quick-card"
+                        data-action="applications"
+                        onclick={handleQuickAction}>
+
+                        <span class="quick-icon green">
+                            🎓
+                        </span>
+
+                        <span class="quick-title">
+                            My Applications
+                        </span>
+
+                        <span class="quick-description">
+                            Track your admission applications
+                            and status.
+                        </span>
+
+                        <span class="quick-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="quick-card"
+                        data-action="documents"
+                        onclick={handleQuickAction}>
+
+                        <span class="quick-icon orange">
+                            📄
+                        </span>
+
+                        <span class="quick-title">
+                            Documents
+                        </span>
+
+                        <span class="quick-description">
+                            Access your academic documents
+                            and certificates.
+                        </span>
+
+                        <span class="quick-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="quick-card"
+                        data-action="fees"
+                        onclick={handleQuickAction}>
+
+                        <span class="quick-icon purple">
+                            💳
+                        </span>
+
+                        <span class="quick-title">
+                            Fees & Payments
+                        </span>
+
+                        <span class="quick-description">
+                            View your program fee and
+                            payment information.
+                        </span>
+
+                        <span class="quick-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MAIN DASHBOARD
+                 ================================================= -->
+
+            <section class="dashboard-grid">
+
+
+                <!-- =============================================
+                     PROFILE
+                     ============================================= -->
+
+                <div class="dashboard-card profile-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <span class="section-label">
+                                PERSONAL INFORMATION
+                            </span>
+
+                            <h2>
+                                My Profile
+                            </h2>
+                        </div>
+
+                        <span class="card-header-icon">
+                            👤
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-details">
+
+                        <div class="profile-row">
+
+                            <span>
+                                Full Name
+                            </span>
+
+                            <strong>
+                                {studentName}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="profile-row">
+
+                            <span>
+                                Email
+                            </span>
+
+                            <strong>
+                                {studentEmail}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="profile-row">
+
+                            <span>
+                                Mobile
+                            </span>
+
+                            <strong>
+                                {studentMobile}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="profile-row">
+
+                            <span>
+                                City
+                            </span>
+
+                            <strong>
+                                {studentCity}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="profile-row">
+
+                            <span>
+                                State
+                            </span>
+
+                            <strong>
+                                {studentState}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =============================================
+                     LATEST APPLICATION
+                     ============================================= -->
+
+                <div class="dashboard-card application-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <span class="section-label">
+                                ADMISSION
+                            </span>
+
+                            <h2>
+                                Latest Application
+                            </h2>
+                        </div>
+
+                        <span class="card-header-icon">
+                            🎓
+                        </span>
+
+                    </div>
+
+
+                    <template if:true={hasApplication}>
+
+                        <div class="application-number">
+                            {latestApplication.Name}
+                        </div>
+
+
+                        <div class="program-name">
+                            {latestProgramName}
+                        </div>
+
+
+                        <div class="application-info">
+
+                            <div>
+                                <span>
+                                    Application Date
+                                </span>
+
+                                <strong>
+                                    {latestApplicationDate}
+                                </strong>
+                            </div>
+
+
+                            <div>
+                                <span>
+                                    Status
+                                </span>
+
+                                <strong
+                                    class={applicationStatusClass}>
+                                    {latestApplicationStatus}
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="application-progress">
+
+                            <div class="progress-line">
+
+                                <div class={submittedProgressClass}>
+                                </div>
+
+                            </div>
+
+                            <div class="progress-labels">
+
+                                <span>
+                                    Submitted
+                                </span>
+
+                                <span>
+                                    Under Review
+                                </span>
+
+                                <span>
+                                    Decision
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </template>
+
+
+                    <template if:false={hasApplication}>
+
+                        <div class="empty-state">
+
+                            <div>
+                                🎓
+                            </div>
+
+                            <h3>
+                                No application found
+                            </h3>
+
+                            <p>
+                                You have not submitted an
+                                admission application yet.
+                            </p>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </section>
+
+
+
+            <template if:true={showSuccessMessage}>
+                <div class="success-message">
+                    ✓ {successMessage}
+                </div>
+            </template>
+
+            <!-- =================================================
+                 SERVICE REQUESTS
+                 ================================================= -->
+
+            <section class="section">
+
+                <div class="section-heading request-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            SUPPORT
+                        </span>
+
+                        <h2>
+                            My Service Requests
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        onclick={openRequestModal}>
+
+                        + Raise Request
+
+                    </button>
+
+                </div>
+
+
+                <template if:true={hasRequests}>
+
+                    <div class="request-table">
+
+                        <div class="request-table-header">
+
+                            <span>
+                                Request
+                            </span>
+
+                            <span>
+                                Type
+                            </span>
+
+                            <span>
+                                Priority
+                            </span>
+
+                            <span>
+                                Status
+                            </span>
+
+                            <span>
+                                Date
+                            </span>
+
+                        </div>
+
+
+                        <template for:each={requests} for:item="request">
+
+                            <div class="request-row" key={request.Id}>
+
+                                <div>
+                                    <strong>
+                {request.Name}
+            </strong>
+
+                                    <span>
+                {request.requestSubject}
+            </span>
+                                </div>
+
+                                <span>
+            {request.requestType}
+        </span>
+
+                                <span>
+            {request.requestPriority}
+        </span>
+
+                                <span
+            class={request.statusClass}>
+
+            {request.requestStatus}
+
+        </span>
+
+                                <span>
+            {request.createdDate}
+        </span>
+
+                            </div>
+
+                        </template>
+
+
+                    </div>
+
+                </template>
+
+
+                <template if:false={hasRequests}>
+
+                    <div class="empty-request">
+
+                        <div class="empty-request-icon">
+                            📨
+                        </div>
+
+                        <h3>
+                            No service requests
+                        </h3>
+
+                        <p>
+                            Need help with admission,
+                            examination, fees or documents?
+                        </p>
+
+                        <button
+                            class="outline-button"
+                            onclick={openRequestModal}>
+
+                            Raise Your First Request
+
+                        </button>
+
+                    </div>
+
+                </template>
+
+            </section>
+
+
+            <!-- =================================================
+                 HELP SECTION
+                 ================================================= -->
+
+            <section class="help-banner">
+
+                <div class="help-icon">
+                    💬
+                </div>
+
+                <div class="help-content">
+
+                    <span>
+                        NEED HELP?
+                    </span>
+
+                    <h2>
+                        We're here to support your
+                        academic journey.
+                    </h2>
+
+                    <p>
+                        Raise a service request and our
+                        student support team will assist you.
+                    </p>
+
+                </div>
+
+                <button
+                    class="help-button"
+                    onclick={openRequestModal}>
+
+                    Contact Student Support
+
+                </button>
+
+            </section>
+
+        </div>
+
+    </template>
+
+
+    <!-- =========================================================
+         SERVICE REQUEST MODAL
+         ========================================================= -->
+
+    <template if:true={showRequestModal}>
+
+        <section role="dialog" tabindex="-1" aria-modal="true" class="modal-backdrop">
+
+            <div class="request-modal">
+
+                <div class="modal-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            STUDENT SUPPORT
+                        </span>
+
+                        <h2>
+                            Raise a Service Request
+                        </h2>
+
+                        <p>
+                            Tell us how we can help you.
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="close-button"
+                        onclick={closeRequestModal}>
+
+                        ×
+
+                    </button>
+
+                </div>
+
+
+                <div class="modal-body">
+
+                    <lightning-combobox name="requestType" label="Request Type" value={requestType}
+                        options={requestTypeOptions} onchange={handleRequestInput} required>
+                    </lightning-combobox>
+
+
+                    <lightning-combobox name="priority" label="Priority" value={priority} options={priorityOptions}
+                        onchange={handleRequestInput}>
+                    </lightning-combobox>
+
+
+                    <lightning-input name="subject" label="Subject" value={subject} onchange={handleRequestInput}
+                        required>
+                    </lightning-input>
+
+
+                    <lightning-combobox name="applicationId" label="Related Application" value={applicationId}
+                        options={applicationOptions} onchange={handleRequestInput}>
+                    </lightning-combobox>
+
+
+                    <lightning-textarea name="description" label="Describe Your Request" value={description}
+                        onchange={handleRequestInput} required>
+                    </lightning-textarea>
+
+
+                    <template if:true={requestError}>
+
+                        <div class="modal-error">
+                            {requestError}
+                        </div>
+
+                    </template>
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button
+                        class="cancel-button"
+                        onclick={closeRequestModal}
+                        disabled={isSubmittingRequest}>
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                        class="primary-button"
+                        onclick={submitRequest}
+                        disabled={isSubmittingRequest}>
+
+                        {requestButtonLabel}
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </template>
+
+</template>

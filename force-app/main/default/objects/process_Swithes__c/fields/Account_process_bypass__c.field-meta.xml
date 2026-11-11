@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_process_bypass__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>this help in bypass trigger</description>
+    <inlineHelpText>this help in bypass trigger</inlineHelpText>
+    <label>Account process bypass</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

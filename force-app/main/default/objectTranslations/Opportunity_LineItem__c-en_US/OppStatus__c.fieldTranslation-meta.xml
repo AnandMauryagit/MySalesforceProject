@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- OppStatus --></label>
+    <name>OppStatus__c</name>
+    <picklistValues>
+        <masterLabel>Actual Amount</masterLabel>
+        <translation><!-- Actual Amount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Projected Amount</masterLabel>
+        <translation><!-- Projected Amount --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

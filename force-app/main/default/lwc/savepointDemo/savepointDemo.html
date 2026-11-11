@@ -1,0 +1,528 @@
+<template>
+
+    <lightning-card>
+
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <div class="demo-header">
+
+            <div class="header-icon">
+                <lightning-icon
+                    icon-name="utility:database"
+                    size="medium">
+                </lightning-icon>
+            </div>
+
+            <div>
+                <h1>Savepoint Transaction Demo</h1>
+
+                <p>
+                    Demonstrate Insert → Savepoint → Error → Rollback
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- TRANSACTION FLOW -->
+        <!-- ================================================= -->
+
+        <div class="flow-container">
+
+            <div class="flow-step">
+                <div class="flow-number">1</div>
+                <span>Account</span>
+            </div>
+
+            <div class="flow-line"></div>
+
+            <div class="flow-step savepoint-step">
+                <div class="flow-number">2</div>
+                <span>Savepoint</span>
+            </div>
+
+            <div class="flow-line"></div>
+
+            <div class="flow-step">
+                <div class="flow-number">3</div>
+                <span>Contact</span>
+            </div>
+
+            <div class="flow-line"></div>
+
+            <div class="flow-step">
+                <div class="flow-number">4</div>
+                <span>Opportunity</span>
+            </div>
+
+            <div class="flow-line"></div>
+
+            <div class="flow-step error-step">
+                <div class="flow-number">!</div>
+                <span>Error</span>
+            </div>
+
+            <div class="flow-line"></div>
+
+            <div class="flow-step rollback-step">
+                <div class="flow-number">↩</div>
+                <span>Rollback</span>
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- INPUT SECTIONS -->
+        <!-- ================================================= -->
+
+        <div class="form-container">
+
+
+            <!-- ============================================= -->
+            <!-- ACCOUNT -->
+            <!-- ============================================= -->
+
+            <div class="section-card">
+
+                <div class="section-header account-header">
+
+                    <div class="section-title">
+
+                        <lightning-icon
+                            icon-name="standard:account"
+                            size="small">
+                        </lightning-icon>
+
+                        <div>
+                            <h2>Method 1 — Account</h2>
+
+                            <span>
+                                Created before Savepoint
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <span class="status-badge pending">
+                        INSERT
+                    </span>
+
+                </div>
+
+
+                <div class="field-grid">
+
+                    <lightning-input
+                        label="Account Name"
+                        value={accountName}
+                        onchange={handleChange}
+                        data-field="accountName"
+                        required>
+                    </lightning-input>
+
+                    <lightning-input
+                        label="Phone"
+                        value={accountPhone}
+                        onchange={handleChange}
+                        data-field="accountPhone">
+                    </lightning-input>
+
+                    <lightning-combobox
+                        label="Industry"
+                        value={accountIndustry}
+                        options={industryOptions}
+                        onchange={handleChange}
+                        data-field="accountIndustry">
+                    </lightning-combobox>
+
+                    <lightning-input
+                        label="Website"
+                        type="url"
+                        value={accountWebsite}
+                        onchange={handleChange}
+                        data-field="accountWebsite">
+                    </lightning-input>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================================= -->
+            <!-- CONTACT -->
+            <!-- ============================================= -->
+
+            <div class="section-card">
+
+                <div class="section-header contact-header">
+
+                    <div class="section-title">
+
+                        <lightning-icon
+                            icon-name="standard:contact"
+                            size="small">
+                        </lightning-icon>
+
+                        <div>
+                            <h2>Method 2 — Contact</h2>
+
+                            <span>
+                                Created after Savepoint
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <span class="status-badge pending">
+                        INSERT
+                    </span>
+
+                </div>
+
+
+                <div class="field-grid">
+
+                    <lightning-input
+                        label="First Name"
+                        value={contactFirstName}
+                        onchange={handleChange}
+                        data-field="contactFirstName">
+                    </lightning-input>
+
+                    <lightning-input
+                        label="Last Name"
+                        value={contactLastName}
+                        onchange={handleChange}
+                        data-field="contactLastName"
+                        required>
+                    </lightning-input>
+
+                    <lightning-input
+                        label="Email"
+                        type="email"
+                        value={contactEmail}
+                        onchange={handleChange}
+                        data-field="contactEmail">
+                    </lightning-input>
+
+                    <lightning-input
+                        label="Phone"
+                        value={contactPhone}
+                        onchange={handleChange}
+                        data-field="contactPhone">
+                    </lightning-input>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================================= -->
+            <!-- OPPORTUNITY -->
+            <!-- ============================================= -->
+
+            <div class="section-card">
+
+                <div class="section-header opportunity-header">
+
+                    <div class="section-title">
+
+                        <lightning-icon
+                            icon-name="standard:opportunity"
+                            size="small">
+                        </lightning-icon>
+
+                        <div>
+                            <h2>Method 3 — Opportunity</h2>
+
+                            <span>
+                                Created after Savepoint
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <span class="status-badge pending">
+                        INSERT
+                    </span>
+
+                </div>
+
+
+                <div class="field-grid">
+
+                    <lightning-input
+                        label="Opportunity Name"
+                        value={opportunityName}
+                        onchange={handleChange}
+                        data-field="opportunityName"
+                        required>
+                    </lightning-input>
+
+                    <lightning-input
+                        label="Amount"
+                        type="number"
+                        value={opportunityAmount}
+                        onchange={handleChange}
+                        data-field="opportunityAmount">
+                    </lightning-input>
+
+                    <lightning-combobox
+                        label="Stage"
+                        value={opportunityStage}
+                        options={stageOptions}
+                        onchange={handleChange}
+                        data-field="opportunityStage">
+                    </lightning-combobox>
+
+                    <lightning-input
+                        label="Close Date"
+                        type="date"
+                        value={opportunityCloseDate}
+                        onchange={handleChange}
+                        data-field="opportunityCloseDate">
+                    </lightning-input>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- RUN BUTTON -->
+        <!-- ================================================= -->
+
+        <div class="action-area">
+
+            <lightning-button
+                variant="brand"
+                label="Run Savepoint Demo"
+                icon-name="utility:play"
+                onclick={runDemo}
+                disabled={isRunning}>
+            </lightning-button>
+
+            <lightning-button
+                label="Reset"
+                icon-name="utility:refresh"
+                onclick={resetDemo}
+                disabled={isRunning}>
+            </lightning-button>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- LOADING -->
+        <!-- ================================================= -->
+
+        <template if:true={isRunning}>
+
+            <div class="loading-area">
+
+                <lightning-spinner
+                    alternative-text="Running demo..."
+                    size="medium">
+                </lightning-spinner>
+
+                <p>Running transaction...</p>
+
+            </div>
+
+        </template>
+
+
+        <!-- ================================================= -->
+        <!-- RESULT -->
+        <!-- ================================================= -->
+
+        <template if:true={showResult}>
+
+            <div class="result-container">
+
+                <div class="result-header">
+
+                    <lightning-icon
+                        icon-name="utility:rollback"
+                        size="small">
+                    </lightning-icon>
+
+                    <div>
+                        <h2>Transaction Result</h2>
+
+                        <p>
+                            Error occurred and rollback was executed
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- ========================================= -->
+                <!-- RESULT CARDS -->
+                <!-- ========================================= -->
+
+                <div class="result-grid">
+
+
+                    <!-- ACCOUNT -->
+
+                    <div class="result-card kept">
+
+                        <div class="result-icon">
+
+                            <lightning-icon
+                                icon-name="standard:account"
+                                size="medium">
+                            </lightning-icon>
+
+                        </div>
+
+                        <div class="result-info">
+
+                            <h3>Account</h3>
+
+                            <span class="result-status">
+                                ✓ CREATED & KEPT
+                            </span>
+
+                            <p>
+                                Created before Savepoint
+                            </p>
+
+                            <template if:true={accountId}>
+
+                                <a
+                                    href={accountUrl}
+                                    target="_blank">
+
+                                    View Account
+
+                                </a>
+
+                            </template>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONTACT -->
+
+                    <div class="result-card rolled-back">
+
+                        <div class="result-icon">
+
+                            <lightning-icon
+                                icon-name="standard:contact"
+                                size="medium">
+                            </lightning-icon>
+
+                        </div>
+
+                        <div class="result-info">
+
+                            <h3>Contact</h3>
+
+                            <span class="result-status">
+                                ↩ ROLLED BACK
+                            </span>
+
+                            <p>
+                                Created after Savepoint
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- OPPORTUNITY -->
+
+                    <div class="result-card rolled-back">
+
+                        <div class="result-icon">
+
+                            <lightning-icon
+                                icon-name="standard:opportunity"
+                                size="medium">
+                            </lightning-icon>
+
+                        </div>
+
+                        <div class="result-info">
+
+                            <h3>Opportunity</h3>
+
+                            <span class="result-status">
+                                ↩ ROLLED BACK
+                            </span>
+
+                            <p>
+                                Created after Savepoint
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- ========================================= -->
+                <!-- EXPLANATION -->
+                <!-- ========================================= -->
+
+                <div class="explanation">
+
+                    <strong>What happened?</strong>
+
+                    <p>
+                        The Account was inserted before the
+                        Savepoint, so it remains in the database.
+                        The Contact and Opportunity were inserted
+                        after the Savepoint, so they were removed
+                        when the transaction rolled back.
+                    </p>
+
+                </div>
+
+
+                <!-- ========================================= -->
+                <!-- ERROR -->
+                <!-- ========================================= -->
+
+                <div class="error-box">
+
+                    <lightning-icon
+                        icon-name="utility:error"
+                        size="small">
+                    </lightning-icon>
+
+                    <div>
+
+                        <strong>Intentional Error</strong>
+
+                        <p>
+                            {errorMessage}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </template>
+
+    </lightning-card>
+
+</template>

@@ -1,0 +1,406 @@
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.admission-container {
+    width: 100%;
+    background: #f5f7fb;
+    min-height: 700px;
+    padding-bottom: 60px;
+}
+
+
+/* =========================================================
+   ADMISSION HERO
+   ========================================================= */
+
+.admission-header {
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        #0b2a4a 0%,
+        #123f68 55%,
+        #176b8f 100%
+    );
+    padding: 55px 8%;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.admission-header::before {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    right: -80px;
+    top: -120px;
+}
+
+.admission-header::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    right: 180px;
+    bottom: -150px;
+}
+
+.admission-header > * {
+    position: relative;
+    z-index: 2;
+}
+
+.admission-header h1 {
+    margin: 0 0 10px;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.admission-header p {
+    margin: 0;
+    max-width: 650px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================================================
+   FORM AREA
+   ========================================================= */
+
+.form-section {
+    max-width: 1100px;
+    margin: 28px auto 0;
+    padding: 28px 32px;
+    background: #ffffff;
+    border: 1px solid #e5e9f0;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(20, 45, 75, 0.06);
+}
+
+.form-section h2 {
+    position: relative;
+    margin: 0 0 24px;
+    padding-left: 14px;
+    font-size: 19px;
+    font-weight: 700;
+    color: #153b5c;
+}
+
+.form-section h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 4px;
+    height: 21px;
+    border-radius: 3px;
+    background: #176b8f;
+}
+
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 24px;
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   LIGHTNING INPUT SPACING
+   ========================================================= */
+
+lightning-input,
+lightning-combobox,
+lightning-textarea {
+    display: block;
+}
+
+
+/* =========================================================
+   BUTTON AREA
+   ========================================================= */
+
+.form-actions {
+    max-width: 1100px;
+    margin: 28px auto 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 4px;
+}
+
+.submit-btn {
+    min-width: 190px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 7px;
+    background: #0b5cab;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(11, 92, 171, 0.22);
+}
+
+.submit-btn:hover {
+    background: #084b8a;
+    transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* =========================================================
+   SUCCESS SCREEN
+   ========================================================= */
+
+.success-container {
+    max-width: 850px;
+    margin: 55px auto;
+    padding: 48px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #e3e8ef;
+    box-shadow: 0 8px 28px rgba(20, 45, 75, 0.08);
+}
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9f8ef;
+    color: #1c8c4c;
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.success-container h1 {
+    margin: 0 0 10px;
+    color: #173c5b;
+    font-size: 28px;
+}
+
+.success-container > p {
+    color: #68778a;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   APPLICATION SUMMARY
+   ========================================================= */
+
+.application-summary {
+    max-width: 650px;
+    margin: 30px auto;
+    overflow: hidden;
+    border: 1px solid #e0e6ed;
+    border-radius: 10px;
+    background: #fafbfd;
+    text-align: left;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 17px 22px;
+    border-bottom: 1px solid #e5e9ef;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row span {
+    color: #697789;
+    font-size: 14px;
+}
+
+.summary-row strong {
+    color: #183d5b;
+    font-size: 15px;
+    text-align: right;
+}
+
+.confirmation-message {
+    max-width: 550px;
+    margin: 20px auto 28px;
+}
+
+
+/* =========================================================
+   NEW APPLICATION BUTTON
+   ========================================================= */
+
+.new-application-btn {
+    padding: 12px 25px;
+    border: 1px solid #0b5cab;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #0b5cab;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.new-application-btn:hover {
+    background: #0b5cab;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.error-container {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 16px 20px;
+    border-left: 4px solid #d83a3a;
+    border-radius: 6px;
+    background: #fff4f4;
+    color: #8b2020;
+}
+
+.error-container strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.error-container p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.loading-container {
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f5f7fb;
+}
+
+.loading-container p {
+    margin-top: 20px;
+    color: #667789;
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .admission-header {
+        padding: 45px 5%;
+    }
+
+    .form-section {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .form-actions {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .admission-header {
+        padding: 38px 22px;
+    }
+
+    .admission-header h1 {
+        font-size: 28px;
+    }
+
+    .admission-header p {
+        font-size: 14px;
+    }
+
+    .form-section {
+        margin: 18px 12px 0;
+        padding: 22px 18px;
+        border-radius: 9px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .form-actions {
+        margin: 22px 12px 0;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+
+    .success-container {
+        margin: 25px 12px;
+        padding: 30px 20px;
+    }
+
+    .success-container h1 {
+        font-size: 23px;
+    }
+
+    .summary-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .summary-row strong {
+        text-align: left;
+    }
+
+}
+.admission-tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #d9f1ff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}

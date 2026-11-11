@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- state --></label>
+    <name>state__c</name>
+    <picklistValues>
+        <masterLabel>bihar</masterLabel>
+        <translation><!-- bihar --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>goa</masterLabel>
+        <translation><!-- goa --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>gujrat</masterLabel>
+        <translation><!-- gujrat --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>jharkhand</masterLabel>
+        <translation><!-- jharkhand --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>maharashtra</masterLabel>
+        <translation><!-- maharashtra --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>mp</masterLabel>
+        <translation><!-- mp --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>up</masterLabel>
+        <translation><!-- up --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

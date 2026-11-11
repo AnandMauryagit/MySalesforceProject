@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Issue Type --></label>
+    <name>Issue_Type__c</name>
+    <picklistValues>
+        <masterLabel>Account Access</masterLabel>
+        <translation><!-- Account Access --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Billing</masterLabel>
+        <translation><!-- Billing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bug</masterLabel>
+        <translation><!-- Bug --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Enquiry</masterLabel>
+        <translation><!-- Enquiry --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Technical</masterLabel>
+        <translation><!-- Technical --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

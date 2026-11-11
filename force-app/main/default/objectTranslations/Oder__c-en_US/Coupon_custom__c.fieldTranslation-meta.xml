@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Coupon custom --></label>
+    <name>Coupon_custom__c</name>
+    <relationshipLabel><!-- Oder --></relationshipLabel>
+</CustomFieldTranslation>

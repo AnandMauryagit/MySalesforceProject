@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Country Search">
+
+        <div class="slds-p-around_medium">
+
+            <lightning-input
+                label="Country Name"
+                value={countryName}
+                onchange={handleCountryChange}>
+            </lightning-input>
+
+            <lightning-button
+                label="Search"
+                variant="brand"
+                onclick={searchCountry}
+                class="slds-m-top_medium">
+            </lightning-button>
+
+        </div>
+
+        <template if:true={responseData}>
+            <div class="slds-p-around_medium">
+                <lightning-formatted-text
+                    value={responseData}>
+                </lightning-formatted-text>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>

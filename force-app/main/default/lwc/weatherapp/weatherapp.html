@@ -1,0 +1,22 @@
+<template>
+
+    <lightning-card title="Weather">
+
+        <lightning-input
+            label="City"
+            value={city}
+            onchange={handleChange}>
+        </lightning-input>
+
+        <lightning-button
+            label="Get Weather"
+            onclick={fetchWeather}>
+        </lightning-button>
+
+        <template if:true={weather}>
+            <p>{weather}</p>
+        </template>
+
+    </lightning-card>
+
+</template>

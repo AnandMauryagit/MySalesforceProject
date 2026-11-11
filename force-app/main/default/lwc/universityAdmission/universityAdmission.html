@@ -1,0 +1,267 @@
+<template>
+
+    <!-- ========================================= -->
+    <!-- LOADING -->
+    <!-- ========================================= -->
+
+    <template if:true={isLoading}>
+
+        <div class="loading-container">
+
+            <lightning-spinner alternative-text="Loading programs" size="medium">
+            </lightning-spinner>
+
+            <p>Loading admission form...</p>
+
+        </div>
+
+    </template>
+
+
+    <!-- ========================================= -->
+    <!-- ERROR -->
+    <!-- ========================================= -->
+
+    <template if:true={errorMessage}>
+
+        <div class="error-container">
+
+            <strong>Unable to continue</strong>
+
+            <p>{errorMessage}</p>
+
+        </div>
+
+    </template>
+
+
+    <!-- ========================================= -->
+    <!-- APPLICATION FORM -->
+    <!-- ========================================= -->
+
+    <template if:true={showForm}>
+
+        <div class="admission-container">
+
+            <div class="admission-header">
+                <span class="admission-tag"> ADMISSIONS </span>
+                <h1> Start Your Admission Journey </h1>
+
+                <p>
+                    Complete the form below to apply
+                    for your selected academic program.
+                </p>
+
+            </div>
+
+
+            <!-- ============================== -->
+            <!-- PROGRAM -->
+            <!-- ============================== -->
+
+            <div class="form-section">
+
+                <h2>Program Information</h2>
+
+                <lightning-combobox name="selectedProgram" label="Select Program" value={selectedProgram}
+                    options={programs} onchange={handleProgramChange} required>
+                </lightning-combobox>
+
+            </div>
+
+
+            <!-- ============================== -->
+            <!-- PERSONAL INFORMATION -->
+            <!-- ============================== -->
+
+            <div class="form-section">
+
+                <h2>Personal Information</h2>
+
+                <div class="form-grid">
+
+                    <lightning-input name="applicantName" label="Applicant Name" value={applicantName}
+                        onchange={handleInputChange} required>
+                    </lightning-input>
+
+
+                    <lightning-input name="email" type="email" label="Email" value={email} onchange={handleInputChange}
+                        required>
+                    </lightning-input>
+
+
+                    <lightning-input name="mobile" type="tel" label="Mobile Number" value={mobile}
+                        onchange={handleInputChange} required>
+                    </lightning-input>
+
+
+                    <lightning-input name="dateOfBirth" type="date" label="Date of Birth" value={dateOfBirth}
+                        onchange={handleInputChange}>
+                    </lightning-input>
+
+
+                    <lightning-combobox name="gender" label="Gender" value={gender} options={genderOptions}
+                        onchange={handleInputChange}>
+                    </lightning-combobox>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================== -->
+            <!-- ADDRESS -->
+            <!-- ============================== -->
+
+            <div class="form-section">
+
+                <h2>Address Information</h2>
+
+                <lightning-textarea name="address" label="Address" value={address} onchange={handleInputChange}>
+                </lightning-textarea>
+
+
+                <div class="form-grid">
+
+                    <lightning-input name="city" label="City" value={city} onchange={handleInputChange}>
+                    </lightning-input>
+
+
+                    <lightning-input name="state" label="State" value={state} onchange={handleInputChange}>
+                    </lightning-input>
+
+
+                    <lightning-input name="pincode" label="Pincode" value={pincode} onchange={handleInputChange}>
+                    </lightning-input>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================== -->
+            <!-- EDUCATION -->
+            <!-- ============================== -->
+
+            <div class="form-section">
+
+                <h2>Educational Information</h2>
+
+                <div class="form-grid">
+
+                    <lightning-input name="qualification" label="Highest Qualification" value={qualification}
+                        onchange={handleInputChange}>
+                    </lightning-input>
+
+
+                    <lightning-input name="passingYear" type="number" label="Passing Year" value={passingYear}
+                        onchange={handleInputChange}>
+                    </lightning-input>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================== -->
+            <!-- SUBMIT -->
+            <!-- ============================== -->
+
+            <div class="form-actions">
+
+                <button
+                    class="submit-btn"
+                    onclick={handleSubmit}
+                    disabled={isSubmitting}>
+
+                    {submitButtonLabel}
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </template>
+
+
+    <!-- ========================================= -->
+    <!-- SUCCESS -->
+    <!-- ========================================= -->
+
+    <template if:true={applicationSubmitted}>
+
+        <div class="success-container">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h1>
+                Application Submitted Successfully
+            </h1>
+
+            <p>
+                Thank you for submitting your
+                admission application.
+            </p>
+
+
+            <div class="application-summary">
+
+                <div class="summary-row">
+
+                    <span>Application ID</span>
+
+                    <strong>
+                        {applicationNumber}
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>Program</span>
+
+                    <strong>
+                        {submittedProgram}
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>Status</span>
+
+                    <strong>
+                        {applicationStatus}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <p class="confirmation-message">
+
+                Please keep your application reference
+                for future communication.
+
+            </p>
+
+
+            <button
+                class="new-application-btn"
+                onclick={handleNewApplication}>
+
+                Submit Another Application
+
+            </button>
+
+        </div>
+
+    </template>
+
+</template>

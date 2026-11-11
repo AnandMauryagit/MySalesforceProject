@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>Action on owner change {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Action on owner change</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>update_data_related</name>
+        <label>update data related</label>
+        <locationX>50</locationX>
+        <locationY>276</locationY>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <stringValue>00000000000</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update_email_data</name>
+        <label>update email data</label>
+        <locationX>314</locationX>
+        <locationY>276</locationY>
+        <inputAssignments>
+            <field>Email__c</field>
+            <value>
+                <stringValue>test12@gmail.com</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update_product</name>
+        <label>update product</label>
+        <locationX>578</locationX>
+        <locationY>276</locationY>
+        <inputAssignments>
+            <field>Product__c</field>
+            <value>
+                <stringValue>Good product</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>For_2_minute</name>
+            <connector>
+                <targetReference>update_data_related</targetReference>
+            </connector>
+            <label>For 2 minute</label>
+            <offsetNumber>2</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>OwnerChangedTime__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>For_4_minute</name>
+            <connector>
+                <targetReference>update_email_data</targetReference>
+            </connector>
+            <label>For 4 minute</label>
+            <offsetNumber>4</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>OwnerChangedTime__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>For_6_minute</name>
+            <connector>
+                <targetReference>update_product</targetReference>
+            </connector>
+            <label>For 6 minute</label>
+            <offsetNumber>6</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>OwnerChangedTime__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

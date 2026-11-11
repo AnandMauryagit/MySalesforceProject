@@ -1,0 +1,14 @@
+.slds-modal__container {
+	width: 50%;
+	max-width: 50rem;
+}
+
+.slds-modal__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.slds-modal__footer {
+	text-align: right;
+}

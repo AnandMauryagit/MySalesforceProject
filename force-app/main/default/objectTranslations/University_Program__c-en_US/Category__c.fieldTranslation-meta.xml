@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Category --></label>
+    <name>Category__c</name>
+    <picklistValues>
+        <masterLabel>Arts &amp; Humanities</masterLabel>
+        <translation><!-- Arts &amp; Humanities --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Commerce</masterLabel>
+        <translation><!-- Commerce --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Computer Applications</masterLabel>
+        <translation><!-- Computer Applications --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Education</masterLabel>
+        <translation><!-- Education --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Engineering</masterLabel>
+        <translation><!-- Engineering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Library Science</masterLabel>
+        <translation><!-- Library Science --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Management</masterLabel>
+        <translation><!-- Management --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Professional</masterLabel>
+        <translation><!-- Professional --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Science</masterLabel>
+        <translation><!-- Science --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Social Sciences</masterLabel>
+        <translation><!-- Social Sciences --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Technology</masterLabel>
+        <translation><!-- Technology --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

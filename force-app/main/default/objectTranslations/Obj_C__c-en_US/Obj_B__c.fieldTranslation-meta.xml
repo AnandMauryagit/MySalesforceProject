@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Obj_B --></label>
+    <name>Obj_B__c</name>
+    <relationshipLabel><!-- Obj_Cs --></relationshipLabel>
+</CustomFieldTranslation>

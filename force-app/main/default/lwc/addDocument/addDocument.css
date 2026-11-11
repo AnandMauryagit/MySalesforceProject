@@ -1,0 +1,58 @@
+.mainCard{
+
+    border-radius:20px;
+    background:white;
+
+}
+
+.header{
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:20px;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.titleSection h1{
+
+    font-size:24px;
+    font-weight:700;
+
+}
+
+.titleSection p{
+
+    color:gray;
+
+}
+
+.form{
+
+    padding:25px;
+
+}
+
+.dateGrid{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+
+    margin-top:15px;
+
+}
+
+.buttons{
+
+    margin-top:25px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+}

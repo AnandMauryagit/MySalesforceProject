@@ -1,0 +1,15 @@
+.divpoperty{
+	background-color:rgb(247, 243, 226);
+	margin:5px;
+	padding: 10px;
+			text-align:center;
+    line-height: 60px;
+	width: 70px;
+	display: flex;
+font-size: xxx-large;}
+
+.rightMargine{
+	border: 5px;
+	border-color: blue;
+	padding-left: 250px;
+}

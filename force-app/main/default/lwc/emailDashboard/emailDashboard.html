@@ -1,0 +1,161 @@
+<template>
+    <lightning-card title="Email Dashboard">
+
+        <template if:true={data}>
+
+            <!-- KPI Cards -->
+            <div class="kpi-container">
+                <div class="kpi sent">Sent: {data.sentCount}</div>
+                <div class="kpi read">Read: {data.readCount}</div>
+                <div class="kpi replied">Replied: {data.repliedCount}</div>
+                <div class="kpi draft">Draft: {data.draftCount}</div>
+                <div class="kpi failed">Failed: {data.failedCount}</div>
+            </div>
+            <div class="delivery-container">
+
+                <div class="delivery-header">
+                    <span>Delivery health</span>
+                    <span class="filter-label">{selectedFilterLabel}</span>
+                </div>
+
+                <div class="delivery-bar">
+
+                    <div class="bar sent" style={sentStyle}></div>
+                    <div class="bar read" style={readStyle}></div>
+                    <div class="bar replied" style={repliedStyle}></div>
+                    <div class="bar draft" style={draftStyle}></div>
+                    <div class="bar failed" style={failedStyle}></div>
+
+                </div>
+
+                <div class="delivery-legend">
+                    <span class="legend sent">Sent {data.sentPercent}%</span>
+                    <span class="legend read">Read {data.readPercent}%</span>
+                    <span class="legend replied">Replied {data.repliedPercent}%</span>
+                    <span class="legend draft">Draft {data.draftPercent}%</span>
+                    <span class="legend failed">Failed {data.failedPercent}%</span>
+                </div>
+
+            </div>
+
+            <!-- Email Feed
+            <div class="section">
+                <h3>Real-time Email Feed</h3>
+                <template for:each={data.recentEmails} for:item="email">
+                    <div key={email.Id} class="email-row">
+                        {email.Subject} - {email.Status}
+                    </div>
+                </template>
+            </div> -->
+            <!-- ---------------- -->
+            <div class="filter-container">
+
+                <!-- DATE FILTER -->
+
+                <lightning-combobox class="filter-field" value={selectedFilter} options={filterOptions}
+                    onchange={handleFilterChange}>
+                </lightning-combobox>
+
+                <!-- CUSTOM DATES -->
+
+                <template if:true={isCustom}>
+
+                    <lightning-input class="date-field" type="date" value={fromDate} onchange={handleFromDate}>
+                    </lightning-input>
+
+                    <lightning-input class="date-field" type="date" value={toDate} onchange={handleToDate}>
+                    </lightning-input>
+
+                </template>
+
+                <!-- SEARCH BOX -->
+
+                <lightning-input type="search" label="Search Email" placeholder="Search by subject or email..."
+                    value={searchKey} onchange={handleSearchKeyChange} class="search-box">
+                </lightning-input>
+
+                <!-- SEARCH BUTTON -->
+
+                <lightning-button label="Search" variant="brand" onclick={handleSearch}>
+                </lightning-button>
+
+                <!-- RESET -->
+
+                <lightning-button label="Reset" variant="neutral" onclick={handleReset}>
+                </lightning-button>
+
+            </div>
+            <!-- ----------------------------- -->
+            <!-- ----------------------------- -->
+            <div class="feed-container">
+
+                <!-- Header -->
+                <div class="feed-header">
+                    <span>Real-time email feed</span>
+                    <span class="live-badge">LIVE</span>
+                </div>
+
+                <!-- TABLE HEADER -->
+                <div class="feed-table-header">
+                    <div class="header-subject">Email</div>
+                    <div class="header-datetime">Date & Time</div>
+                    <div class="header-status">Status</div>
+                </div>
+
+                <!-- DATA ROWS -->
+                <template for:each={data.recentEmails} for:item="email">
+                    <div class="feed-row" key={email.Id}>
+
+                        <!-- LEFT -->
+                        <div class="feed-left">
+
+                            <div class={email.dotClass}></div>
+
+                            <div class="feed-content">
+                                <div class="feed-subject">
+                                    {email.Subject}
+                                </div>
+
+                                <div class="email-route">
+                                    {email.fromAddress} → {email.toAddress}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- DATE -->
+                        <div class="feed-time">
+                            {email.time}
+                        </div>
+
+                        <!-- STATUS -->
+                        <div class="status-container">
+                            <div class={email.statusClass}>
+                                {email.statusLabel}
+                            </div>
+                        </div>
+
+                    </div>
+                </template>
+
+            </div>
+
+            <!-- Admin Audit -->
+            <!-- <div class="section">
+                <h3>Email Admin Audit</h3>
+                <template for:each={data.adminLogs} for:item="log">
+                    <div key={log.Id} class="audit-row">
+                        {log.Action} - {log.CreatedBy.Name}
+                    </div>
+                </template>
+            </div> -->
+
+        </template>
+
+        <!-- Optional Loading State -->
+        <template if:false={data}>
+            <div style="padding:20px;">Loading dashboard...</div>
+        </template>
+
+    </lightning-card>
+</template>

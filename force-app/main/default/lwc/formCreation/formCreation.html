@@ -1,0 +1,10 @@
+<template>
+<lightning-card  variant="Narrow"  title="Create Account" icon-name="standard:account">
+    <lightning-input type="text" name="name" label="Name"  onchange={handleChange}></lightning-input>
+<lightning-input type="number" name="phone" label="Phone"  onchange={handleChange}></lightning-input>
+<lightning-input type="email" name="email" label="Email"  onchange={handleChange}></lightning-input>
+<lightning-input type="text"  name="address" label="Address" ></lightning-input>
+<lightning-button variant="brand" label="Save" title="save" onclick={handleClick}></lightning-button>
+<lightning-button variant="destructive" label="Cancel" title="cancel" onclick={handleClick}></lightning-button>
+</lightning-card>
+</template>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Expected_Hours__c</fullName>
+    <label>Total Expected Hours</label>
+    <summarizedField>Worklog__c.Expected_Logged_in_hours__c</summarizedField>
+    <summaryForeignKey>Worklog__c.Timesheet__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

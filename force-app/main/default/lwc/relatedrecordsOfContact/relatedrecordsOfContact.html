@@ -1,0 +1,21 @@
+<template>
+    <!-- <lightning-card title="Contacts"> -->
+        <template if:true={contacts}>
+            <template for:each={contacts} for:item="con">
+                <!-- <div class="slds-p-around_xx-small"  key={con.Id}  > -->
+                    <div class="slds-col slds-size_3-of-12 slds-m-around_medium" style="padding-top: 20x;  border: 2px solid black;" key={con.Id}>
+                        <!-- <div class="slds-p-around_medium" style="padding-top: 20x;  border: 2px solid black;"> -->
+                            <lightning-record-view-form record-id={con.Id} object-api-name="Contact">
+                                <lightning-output-field field-name="Name"></lightning-output-field>
+                                <lightning-output-field field-name="Phone"></lightning-output-field>
+                                <lightning-output-field field-name="Email"></lightning-output-field>
+                            </lightning-record-view-form>
+                        </div>
+                </div>
+            </template>
+        </template>
+        <template if:false={contacts}>
+            <p class="slds-text-align_center">No related contacts found.</p>
+        </template>
+    <!-- </lightning-card> -->
+</template>

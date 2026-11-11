@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>custom_view_all</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>NamespacePrefix</columns>
+    <columns>Name__c</columns>
+    <columns>Phone__c</columns>
+    <columns>IsProtected</columns>
+    <filterScope>Everything</filterScope>
+    <label>custom view all</label>
+</ListView>

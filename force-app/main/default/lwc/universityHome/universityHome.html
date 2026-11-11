@@ -1,0 +1,772 @@
+<template>
+
+    <!-- =====================================================
+         TOP UTILITY BAR
+    ===================================================== -->
+
+    <div class="top-bar">
+
+        <div class="top-left">
+
+            <span>🎓 University Portal</span>
+            <span>📢 Student Support</span>
+            <span>📞 Helpline: 1800-000-000</span>
+
+        </div>
+
+        <div class="top-right">
+
+            <span onclick={handleLogin}>
+                Student Login
+            </span>
+
+            <span>
+                Faculty Login
+            </span>
+
+            <span>
+                English
+            </span>
+
+            <span>
+                हिन्दी
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         UNIVERSITY HEADER
+    ===================================================== -->
+
+    <header class="main-header">
+
+        <div class="university-brand">
+
+            <div class="logo">
+                <span>🎓</span>
+            </div>
+
+            <div class="university-name">
+
+                <h1>
+                    National Open University
+                </h1>
+
+                <p>
+                    Education for Everyone, Everywhere
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <button
+                class="search-button"
+                onclick={handleSearch}>
+
+                🔍
+
+            </button>
+
+            <button
+                class="login-button"
+                onclick={handleLogin}>
+
+                Student Login
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN NAVIGATION
+    ===================================================== -->
+
+    <nav class="navigation">
+
+        <div class="nav-container">
+
+
+            <a class={homeNavClass} data-page="home" onclick={handleNavigation}>
+
+                Home
+
+            </a>
+
+
+            <a class={aboutNavClass} data-page="about" onclick={handleNavigation}>
+
+                About Us
+
+            </a>
+
+
+            <a class={programsNavClass} data-page="programs" onclick={handleNavigation}>
+
+                Programs
+
+            </a>
+
+
+            <a class={admissionsNavClass} data-page="admissions" onclick={handleNavigation}>
+
+                Admissions
+
+            </a>
+
+
+            <a class={studentServicesNavClass} data-page="studentServices" onclick={handleNavigation}>
+
+                Student Services
+
+            </a>
+
+
+            <a class={examinationNavClass} data-page="examination" onclick={handleNavigation}>
+
+                Examination
+
+            </a>
+
+
+            <a class={resultsNavClass} data-page="results" onclick={handleNavigation}>
+
+                Results
+
+            </a>
+
+
+            <a class={announcementsNavClass} data-page="announcements" onclick={handleNavigation}>
+
+                Announcements
+
+            </a>
+
+
+            <a class={contactNavClass} data-page="contact" onclick={handleNavigation}>
+
+                Contact Us
+
+            </a>
+
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         PAGE CONTENT
+         ONLY THIS AREA CHANGES
+    ===================================================== -->
+
+
+    <!-- ================= HOME ================= -->
+
+    <template if:true={isHome}>
+
+        <!-- ANNOUNCEMENT BAR -->
+
+        <div class="announcement-bar">
+
+            <div class="announcement-label">
+                🔔 IMPORTANT
+            </div>
+
+            <div class="announcement-text">
+                Admissions are now open for the upcoming academic session.
+            </div>
+
+            <button onclick={handleAnnouncements}>
+                View All →
+            </button>
+
+        </div>
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-overlay">
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        WELCOME TO OUR UNIVERSITY
+                    </span>
+
+                    <h2>
+                        Learn Today.<br />
+                        Lead Tomorrow.
+                    </h2>
+
+                    <p>
+                        Build your future with flexible, accessible and
+                        technology-enabled education designed for every learner.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <button
+                            class="primary-button"
+                            onclick={handlePrograms}>
+
+                            Explore Programs
+
+                        </button>
+
+                        <button
+                            class="secondary-button"
+                            onclick={handleAdmission}>
+
+                            Apply Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK SERVICES -->
+
+        <section class="services-section">
+
+            <div class="section-heading">
+
+                <span>
+                    STUDENT SERVICES
+                </span>
+
+                <h2>
+                    Everything You Need in One Place
+                </h2>
+
+                <p>
+                    Access important academic and student services quickly.
+                </p>
+
+            </div>
+
+
+            <div class="services-grid">
+
+                <template for:each={services} for:item="service">
+
+                    <div class="service-card" key={service.title} data-service={service.title} onclick={handleService}>
+
+                        <div class="service-icon">
+                            {service.icon}
+                        </div>
+
+                        <h3>
+                            {service.title}
+                        </h3>
+
+                        <p>
+                            {service.description}
+                        </p>
+
+                        <span class="service-link">
+                            Explore →
+                        </span>
+
+                    </div>
+
+                </template>
+
+            </div>
+
+        </section>
+
+
+        <!-- ANNOUNCEMENTS -->
+
+        <section class="announcements-section">
+
+            <div class="section-heading left">
+
+                <span>
+                    LATEST UPDATES
+                </span>
+
+                <h2>
+                    Announcements & Notices
+                </h2>
+
+            </div>
+
+
+            <div class="announcement-grid">
+
+                <template for:each={announcements} for:item="announcement">
+
+                    <div class="notice-card" key={announcement.title}>
+
+                        <div class="notice-date">
+
+                            <strong>
+                                {announcement.day}
+                            </strong>
+
+                            <span>
+                                {announcement.month}
+                            </span>
+
+                        </div>
+
+
+                        <div class="notice-content">
+
+                            <span class="notice-category">
+                                {announcement.category}
+                            </span>
+
+                            <h3>
+                                {announcement.title}
+                            </h3>
+
+                            <p>
+                                {announcement.description}
+                            </p>
+
+                            <a onclick={handleNotice}>
+                                Read More →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </template>
+
+            </div>
+
+
+            <div class="center-button">
+
+                <button
+                    class="outline-button"
+                    onclick={handleAnnouncements}>
+
+                    View All Announcements
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURED PROGRAMS -->
+
+        <section class="program-section">
+
+            <div class="section-heading">
+
+                <span>
+                    ACADEMIC PROGRAMS
+                </span>
+
+                <h2>
+                    Explore Our Programs
+                </h2>
+
+                <p>
+                    Choose from undergraduate, postgraduate, diploma and
+                    certificate programs.
+                </p>
+
+            </div>
+
+
+            <div class="program-grid">
+
+                <template for:each={programs} for:item="program">
+
+                    <div class="program-card" key={program.name}>
+
+                        <div class="program-image">
+
+                            <span>
+                                {program.icon}
+                            </span>
+
+                        </div>
+
+
+                        <div class="program-content">
+
+                            <span class="program-type">
+                                {program.type}
+                            </span>
+
+                            <h3>
+                                {program.name}
+                            </h3>
+
+                            <p>
+                                {program.description}
+                            </p>
+
+                            <button
+                                data-program={program.name}
+                                onclick={handleProgramDetails}>
+
+                                View Program →
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </template>
+
+            </div>
+
+
+            <div class="center-button">
+
+                <button
+                    class="primary-button dark"
+                    onclick={handlePrograms}>
+
+                    View All Programs
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="statistics-section">
+
+            <div class="statistics-overlay">
+
+                <div class="statistics-heading">
+
+                    <span>
+                        OUR UNIVERSITY
+                    </span>
+
+                    <h2>
+                        Education Without Boundaries
+                    </h2>
+
+                </div>
+
+
+                <div class="statistics-grid">
+
+                    <div class="stat">
+                        <strong>50+</strong>
+                        <span>Academic Programs</span>
+                    </div>
+
+                    <div class="stat">
+                        <strong>2.5L+</strong>
+                        <span>Students Enrolled</span>
+                    </div>
+
+                    <div class="stat">
+                        <strong>500+</strong>
+                        <span>Study Centres</span>
+                    </div>
+
+                    <div class="stat">
+                        <strong>25+</strong>
+                        <span>Years of Excellence</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STUDENT CTA -->
+
+        <section class="student-cta">
+
+            <div>
+
+                <span>
+                    ARE YOU A STUDENT?
+                </span>
+
+                <h2>
+                    Manage Your Entire Academic Journey
+                </h2>
+
+                <p>
+                    Access your courses, assignments, examinations,
+                    fees, results and academic information from one dashboard.
+                </p>
+
+            </div>
+
+            <button
+                class="primary-button"
+                onclick={handleLogin}>
+
+                Go to Student Portal →
+
+            </button>
+
+        </section>
+
+    </template>
+
+
+    <!-- ================= PROGRAMS ================= -->
+
+   <template if:true={isPrograms}>
+
+    <c-university-programs
+        onapply={handleProgramApply}>
+    </c-university-programs>
+
+</template>
+
+
+    <!-- ================= ADMISSIONS ================= -->
+
+    <template if:true={isAdmissions}>
+
+        <c-university-admission selected-program-id={selectedProgramId}>
+        </c-university-admission>
+
+    </template>
+
+
+    <!-- ================= STUDENT SERVICES ================= -->
+
+<template if:true={isStudentServices}>
+
+    <c-university-student-services>
+    </c-university-student-services>
+
+</template>
+
+
+
+    <!-- ================= EXAMINATION ================= -->
+
+    <template if:true={isExamination}>
+
+        <section class="page-placeholder">
+
+            <span>EXAMINATION</span>
+
+            <h2>
+                Examination Services
+            </h2>
+
+            <p>
+                Examination registration, schedules and
+                hall-ticket services will appear here.
+            </p>
+
+        </section>
+
+    </template>
+
+
+    <!-- ================= RESULTS ================= -->
+
+    <template if:true={isResults}>
+
+        <section class="page-placeholder">
+
+            <span>RESULTS</span>
+
+            <h2>
+                Examination Results
+            </h2>
+
+            <p>
+                Students will be able to view their
+                examination results here.
+            </p>
+
+        </section>
+
+    </template>
+
+
+    <!-- ================= ANNOUNCEMENTS ================= -->
+
+    <template if:true={isAnnouncements}>
+
+        <section class="page-placeholder">
+
+            <span>ANNOUNCEMENTS</span>
+
+            <h2>
+                Announcements & Notices
+            </h2>
+
+            <p>
+                All university announcements and notices
+                will be displayed here.
+            </p>
+
+        </section>
+
+    </template>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <template if:true={isContact}>
+
+        <section class="page-placeholder">
+
+            <span>CONTACT US</span>
+
+            <h2>
+                Contact National Open University
+            </h2>
+
+            <p>
+                📍 New Delhi, India
+            </p>
+
+            <p>
+                📞 1800-000-000
+            </p>
+
+            <p>
+                ✉ support@university.edu
+            </p>
+
+        </section>
+
+    </template>
+
+
+    <!-- =====================================================
+         FOOTER
+         ALWAYS VISIBLE
+    ===================================================== -->
+
+    <footer>
+
+        <div class="footer-main">
+
+            <div class="footer-about">
+
+                <div class="footer-logo">
+                    🎓
+                </div>
+
+                <h2>
+                    National Open University
+                </h2>
+
+                <p>
+                    Providing accessible, affordable and quality
+                    education to learners across the country.
+                </p>
+
+                <div class="social-icons">
+
+                    <span>𝕏</span>
+                    <span>f</span>
+                    <span>▶</span>
+                    <span>in</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a>About University</a>
+                <a onclick={handlePrograms}>Programs</a>
+                <a onclick={handleAdmission}>Admissions</a>
+                <a onclick={handleAnnouncements}>Announcements</a>
+                <a>Contact Us</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Student Services
+                </h3>
+
+                <a>Student Portal</a>
+                <a>Examination</a>
+                <a>Results</a>
+                <a>Fees</a>
+                <a>Downloads</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    📍 New Delhi, India
+                </p>
+
+                <p>
+                    📞 1800-000-000
+                </p>
+
+                <p>
+                    ✉ support@university.edu
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 National Open University. All Rights Reserved.
+            </span>
+
+            <span>
+                Privacy Policy &nbsp; | &nbsp;
+                Terms &nbsp; | &nbsp;
+                Accessibility
+            </span>
+
+        </div>
+
+    </footer>
+
+</template>

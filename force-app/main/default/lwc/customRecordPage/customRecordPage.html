@@ -1,0 +1,16 @@
+<template>
+    <div>
+        <lightning-card title="Account Data Table with Actions" >
+            <lightning-button variant="base" label="Base" title="Looks like a link" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+            <!-- <div class="slds-scrollable" style="height:20rem;width:85rem" tabindex="0"> -->
+            <template if:true={data}>
+                <lightning-datatable key-field="Id" data={data} show-row-number-column columns={columns}
+                    onrowaction={handleRowAction}></lightning-datatable>
+            </template>
+            <template if:false={data}>
+                <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+            </template>
+    <!-- </div> -->
+    </lightning-card>
+    </div>
+</template>

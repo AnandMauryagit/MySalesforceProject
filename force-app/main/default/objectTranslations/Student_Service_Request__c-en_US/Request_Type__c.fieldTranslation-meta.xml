@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Request Type --></label>
+    <name>Request_Type__c</name>
+    <picklistValues>
+        <masterLabel>Academic</masterLabel>
+        <translation><!-- Academic --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Admission</masterLabel>
+        <translation><!-- Admission --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Documents</masterLabel>
+        <translation><!-- Documents --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Examination</masterLabel>
+        <translation><!-- Examination --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fees &amp; Payment</masterLabel>
+        <translation><!-- Fees &amp; Payment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Technical Support</masterLabel>
+        <translation><!-- Technical Support --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

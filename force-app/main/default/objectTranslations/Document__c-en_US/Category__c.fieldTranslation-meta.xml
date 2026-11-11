@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Category --></label>
+    <name>Category__c</name>
+    <picklistValues>
+        <masterLabel>Fire Licence</masterLabel>
+        <translation><!-- Fire Licence --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hospital contract</masterLabel>
+        <translation><!-- Hospital contract --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

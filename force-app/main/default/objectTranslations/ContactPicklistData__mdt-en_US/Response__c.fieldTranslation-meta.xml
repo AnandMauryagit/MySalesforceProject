@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Response --></label>
+    <name>Response__c</name>
+    <picklistValues>
+        <masterLabel>Phone</masterLabel>
+        <translation><!-- Phone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Postal_Code__c</masterLabel>
+        <translation><!-- Postal_Code__c --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Product__c</masterLabel>
+        <translation><!-- Product__c --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>oppName__c</masterLabel>
+        <translation><!-- oppName__c --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

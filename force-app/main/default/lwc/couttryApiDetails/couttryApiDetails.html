@@ -1,0 +1,14 @@
+<template>
+<div>
+    <lightning-input type="text" label="Enter Country Name" onchange={handleChange}></lightning-input>
+                 <lightning-button variant="See Result" label="Brand Outline" title="Primary action with lighter look" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+       <lightning-card variant="narrow" icon-name="standard:opportunity" if:true={countryna} >
+        <h1 slot="title">{countryna}</h1>
+       <img src={counrtyFlag} alt="Country Flag" height="100px" width="140px" />
+        <div slot="footer">
+            <lightning-map map-markers={counrtyMap}> </lightning-map>
+        </div>
+    </lightning-card>
+
+</div>
+</template>
