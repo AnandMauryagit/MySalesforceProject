@@ -7,5 +7,6 @@ public class AdditionOfnumbers {
 
     public  void Addition (){
      Sum = a+v+b+d;   
+     // this is the third commit of the manin branch and now we will commit and test
     }
 }
